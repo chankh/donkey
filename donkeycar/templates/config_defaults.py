@@ -20,6 +20,14 @@ CAR_PATH = PACKAGE_PATH = os.path.dirname(os.path.realpath(__file__))
 DATA_PATH = os.path.join(CAR_PATH, 'data')
 MODELS_PATH = os.path.join(CAR_PATH, 'models')
 
+#AWS IOT
+IOT_ENABLED = True
+VEHICLE_ID = 'demo'
+AWS_ENDPOINT = '<replace with endpoint from AWS IoT console'
+CA_PATH ='<local path to the AWS IoT Root certificate file>'
+PRIVATE_KEY_PATH='<local path to your device private key>'
+CERTIFICATE_PATH='<local path to your device certificate>'
+
 #VEHICLE
 DRIVE_LOOP_HZ = 20
 MAX_LOOPS = 100000

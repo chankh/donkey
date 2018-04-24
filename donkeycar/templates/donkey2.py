@@ -23,6 +23,7 @@ from donkeycar.parts.keras import KerasCategorical
 from donkeycar.parts.actuator import PCA9685, PWMSteering, PWMThrottle
 from donkeycar.parts.datastore import TubHandler, TubGroup
 from donkeycar.parts.controller import LocalWebController, JoystickController
+from donkeycar.parts.iot import AWSHandler
 
 
 
@@ -122,6 +123,12 @@ def drive(cfg, model_path=None, use_joystick=False):
     tub = th.new_tub_writer(inputs=inputs, types=types)
     V.add(tub, inputs=inputs, run_condition='recording')
     
+    #setup AWS IoT
+    if cfg.IOT_ENABLED:
+        aws = AWSHandler(vehicle_id=cfg.VEHICLE_ID, endpoint=cfg.AWS_ENDPOINT, ca=cfg.CA_PATH, private_key=cfg.PRIVATE_KEY_PATH, certificate=cfg.CERTIFICATE_PATH)
+        iot = aws.new_iot_publisher(intputs=inputs, types=types)
+        V.add(iot, inputs=inputs, run_condition='recording')
+
     #run the vehicle
     V.start(rate_hz=cfg.DRIVE_LOOP_HZ, 
             max_loop_count=cfg.MAX_LOOPS)
