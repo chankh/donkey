@@ -2,11 +2,18 @@ version: 2
 jobs:
   build:
     docker:
-      - image: continuumio/miniconda3:latest
+      - image: circleci/python:3.6.6
     working_directory: ~/donkey
     steps:
       - checkout
-      - run: conda create -n donkey
+      - run: wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+      - run: bash miniconda.sh -b -p $HOME/miniconda
+      - run: export PATH="$PATH:$HOME/miniconda/bin"
+      - run: hash -r
+      - run: $HOME/miniconda/bin/conda config --set always_yes yes --set changeps1 no
+      - run: $HOME/miniconda/bin/conda update -q conda
+      - run: $HOME/miniconda/bin/conda info -a
+      - run: $HOME/miniconda/bin/conda create -n donkey python=3.6
       - run: source activate donkey
       - run: pip install -e .[tf]
       - run: pip install -e .[dev]
