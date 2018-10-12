@@ -9,4 +9,4 @@ jobs:
       - run: conda create -n donkey
       - run: source activate donkey
       - run: pip install -e .[dev]
-      - run: pytest
+      - run: pytest -v --cov=donkeycar donkeycar/tests
