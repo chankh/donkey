@@ -1,6 +1,5 @@
 # donkeycar: a python self driving library
 
-[![CircleCI](https://circleci.com/gh/chankh/donkey.svg?style=svg)](https://circleci.com/gh/chankh/donkey)
 [![Build Status](https://travis-ci.org/chankh/donkey.svg?branch=master)](https://travis-ci.org/chankh/donkey)
 [![CodeCov](https://codecov.io/gh/wroscoe/donkey/branch/dev/graph/badge.svg)](https://codecov.io/gh/wroscoe/donkey/branch/dev)
 [![PyPI version](https://badge.fury.io/py/donkeycar.svg)](https://badge.fury.io/py/donkeycar)
