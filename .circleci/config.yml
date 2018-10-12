@@ -8,5 +8,7 @@ jobs:
       - checkout
       - run: conda create -n donkey
       - run: source activate donkey
+      - run: pip install -e .[tf]
       - run: pip install -e .[dev]
+      - run: pip install -e .[ci]
       - run: pytest -v --cov=donkeycar donkeycar/tests
