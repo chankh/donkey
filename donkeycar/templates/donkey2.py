@@ -130,7 +130,7 @@ def drive(cfg, model_path=None, use_joystick=False, use_chaos=False):
     #setup AWS IoT
     if cfg.IOT_ENABLED:
         aws = AWSHandler(vehicle_id=cfg.VEHICLE_ID, endpoint=cfg.AWS_ENDPOINT, ca=cfg.CA_PATH, private_key=cfg.PRIVATE_KEY_PATH, certificate=cfg.CERTIFICATE_PATH)
-        iot = aws.new_iot_publisher(intputs=inputs, types=types)
+        iot = aws.new_iot_publisher(inputs=inputs, types=types)
         V.add(iot, inputs=inputs, run_condition='recording')
 
     #run the vehicle
